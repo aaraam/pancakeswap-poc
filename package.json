@@ -4,15 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "node v2.js"
+    "test": "jest",
+    "start": "node v2.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-      "@pancakeswap/sdk": "^5.7.3",
-      "@uniswap/sdk": "^3.0.3",
-      "ethers": "5.4.0"
+    "@pancakeswap/sdk": "^5.7.3",
+    "@uniswap/sdk": "^3.0.3",
+    "ethers": "5.4.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
