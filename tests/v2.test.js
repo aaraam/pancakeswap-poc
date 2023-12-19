@@ -15,6 +15,7 @@ const provider = new ethers.providers.JsonRpcProvider(
 
 // Describe the test suite
 describe('v2 pancake swap tests on bsc testnet', () => {
+    
     // // test if we can see if the pair exists
     // test('test if pair exists', async () => {
     //     const factoryContract = new ethers.Contract(
@@ -36,7 +37,7 @@ describe('v2 pancake swap tests on bsc testnet', () => {
 
     test('test if we can swap tokens', async () => {
 
-        const wallet = new ethers.Wallet('privatekey', provider);
+        const wallet = new ethers.Wallet('privateKey', provider);
         const routerContract = new ethers.Contract(
             v2RouterAddress,
             v2RouterAbi,
@@ -47,7 +48,7 @@ describe('v2 pancake swap tests on bsc testnet', () => {
         const amountIn = ethers.utils.parseUnits('0.000001', 18); // MVDBX has 18 decimals
 
         // Set up swap parameters
-        const amountOutMin = 0; // Minimum amount of USDT you'd like to receive, set to 0 for simplicity
+        const amountOutMin = amountIn.div(4); // calculate amountOutMin as 25% of the amountIn
         const path = [tokenOneAddress, tokenTwoAddress];
         const deadline = Math.floor(Date.now() / 1000) + 60 * 20; // 20 minutes from the current Unix time
 
@@ -63,5 +64,8 @@ describe('v2 pancake swap tests on bsc testnet', () => {
         const receipt = await swapTx.wait();
 
         console.log('Transaction receipt:', receipt);
+
     });
 });
+
+// success transaction - https://testnet.bscscan.com/tx/0xcfe3a0b6c349858477fb97725a6777297fdd017068cc17d676b17f2935fb1fb6

@@ -50,7 +50,8 @@ const main = async () => {
         const amountIn = ethers.utils.parseUnits('1', 18); // MVDBX has 18 decimals
 
         // Set up swap parameters
-        const amountOutMin = 0; // Minimum amount of USDT you'd like to receive, set to 0 for simplicity
+        const amountOutMin = amountIn.div(4); // calculate amountOutMin as 25% of the amountIn
+    
         const path = [mvdbxAddress, tokenAddress];
         const deadline = Math.floor(Date.now() / 1000) + 60 * 20; // 20 minutes from the current Unix time
 
