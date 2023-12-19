@@ -5,13 +5,16 @@ async function main() {
 
     console.log('Deploying contracts with the account:', deployer.address);
 
-    const MVDbxToken = await ethers.getContractFactory('MVDbxToken');
-    const token = await MVDbxToken.deploy(
-        '500000000000000000000000', // assetCap
-        '0x96f141F64A0D6Dd4Cde7Ab75D79BDbDBb393836E' // dataFeed address
-    );
+    // const MVDbxToken = await ethers.getContractFactory('MVDbxToken');
+    // const token = await MVDbxToken.deploy(
+    //     '500000000000000000000000', // assetCap
+    //     '0x96f141F64A0D6Dd4Cde7Ab75D79BDbDBb393836E' // dataFeed address
+    // );
 
-    await token.waitForDeployment();
+    const USDToken = await ethers.getContractFactory('USDTContract');
+    const USDT = await USDToken.deploy();
+
+    await USDT.waitForDeployment();
 
     console.log('Token deployed to:', token.address);
 }
