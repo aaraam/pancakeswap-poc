@@ -37,7 +37,7 @@ describe('v2 pancake swap tests on bsc testnet', () => {
 
     test('test if we can swap tokens', async () => {
 
-        const wallet = new ethers.Wallet('privateKey', provider);
+        const wallet = new ethers.Wallet('privatekey', provider);
         const routerContract = new ethers.Contract(
             v2RouterAddress,
             v2RouterAbi,
@@ -54,7 +54,7 @@ describe('v2 pancake swap tests on bsc testnet', () => {
 
         // Execute the swap
         const swapTx =
-            await routerContract.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+            await routerContract.swapExactTokensForTokens(
                 amountIn,
                 amountOutMin,
                 path,

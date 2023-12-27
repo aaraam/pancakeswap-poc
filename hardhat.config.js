@@ -5,7 +5,7 @@ module.exports = {
     networks: {
         binance: {
             url: 'https://bsc-testnet.publicnode.com',
-            accounts: ['private key goes here'],
+            accounts: ['privatekey'],
         },
     },
 };
